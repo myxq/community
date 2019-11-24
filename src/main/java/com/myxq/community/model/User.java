@@ -1,10 +1,13 @@
 package com.myxq.community.model;
 
 
+import lombok.Data;
+
 /**
  * @author 李永庆
  * @since 2019/11/19
  */
+@Data
 public class User {
 
     private Integer id;
@@ -19,51 +22,8 @@ public class User {
 
     private Long getModified;
 
-    public Integer getId() {
-        return id;
-    }
+    private String bio;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private String avatarUrl;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public Long getGetCreate() {
-        return getCreate;
-    }
-
-    public void setGetCreate(Long getCreate) {
-        this.getCreate = getCreate;
-    }
-
-    public Long getGetModified() {
-        return getModified;
-    }
-
-    public void setGetModified(Long getModified) {
-        this.getModified = getModified;
-    }
 }
