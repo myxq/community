@@ -1,5 +1,6 @@
 package com.myxq.community.controller;
 
+import com.myxq.community.dto.PaginationDTO;
 import com.myxq.community.dto.QuestionDTO;
 import com.myxq.community.mapper.QuestionMapper;
 import com.myxq.community.mapper.UserMapper;
@@ -31,7 +32,9 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(HttpServletRequest request,
-                        Model model){
+                        Model model,
+                        @RequestParam(name = "page",defaultValue = "1") Integer page ,
+                        @RequestParam(name = "size",defaultValue = "2") Integer size){
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {
@@ -46,8 +49,8 @@ public class IndexController {
             }
         }
 
-        List<QuestionDTO> questionList = questionService.list();
-        model.addAttribute("questions",questionList);
+        PaginationDTO pagination = questionService.list(page, size);
+        model.addAttribute("pagination",pagination);
         return "index";
     }
 }
